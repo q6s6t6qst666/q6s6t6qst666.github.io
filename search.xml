@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>关于Java抽象类</title>
+      <link href="/2023/04/03/%E5%85%B3%E4%BA%8Ejava%E6%8A%BD%E8%B1%A1%E7%B1%BB/"/>
+      <url>/2023/04/03/%E5%85%B3%E4%BA%8Ejava%E6%8A%BD%E8%B1%A1%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><ul><li>在所有的普通方法上面都会有一个“{}”，这个表示方法体，有方法体的方法一定可以被对象直接使用。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">xxx</span><span class="params">()</span>&#123;&#125;</span><br></pre></td></tr></table></figure></li><li>而抽象方法,是指没有方法体的方法,同时抽象方法还必须使用关键字abstract做修饰。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">xxx</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure></li><li>抽象方法必须为public或者protected（因为如果为private，则不能被子类继承，子类便无法实现该方法），缺省情况下默认为public<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4></li><li>父类是将子类所共同拥有的属性和方法进行抽取，这些属性和方法中，有的是已经明确实现了的，有的还无法确定，那么我们就可以将其定义成抽象，在后日子类进行重用，进行具体化</li><li>所以，抽象类是为了把相同的但不确定的东西的提取出来，为了以后的重用。定义成抽象类的目的，就是为了在子类中实现抽象方法</li><li>拥有抽象方法的类就是抽象类（但抽象类中也可以不包含抽象方法），抽象类要使用abstract关键字声明<h4 id="抽象类的特性和使用"><a href="#抽象类的特性和使用" class="headerlink" title="抽象类的特性和使用"></a>抽象类的特性和使用</h4></li><li>抽象类不能被实例化。因为抽象类中方法未具体化，这是一种不完整的类，所以直接实例化也就没有意义了</li><li>抽象类的使用必须有子类，使用extends继承，一个子类只能继承一个抽象类</li><li>子类（如果不是抽象类）则必须<strong>覆写</strong>抽象类之中的全部抽象方法（如果子类没有实现父类的抽象方法，则必须将子类也定义为为abstract类。）</li><li>抽象类可以不包含抽象方法，但如果类中包含抽象方法，就必须将该类声明为抽象类<h4 id="抽象类的使用限制"><a href="#抽象类的使用限制" class="headerlink" title="抽象类的使用限制"></a>抽象类的使用限制</h4></li><li>抽象类可以有构造方法，且依然满足先执行父类构造，再执行子类构造的顺序</li><li>抽象类不能使用final声明，因为抽象类必须有子类，而final定义的类不能有子类</li><li>外部抽象类不允许使用static声明，而内部的抽象类可以使用static声明。<br>使用static声明的内部抽象类相当于一个外部抽象类，继承的时候使用“外部类.内部类”的形式表示类名称</li><li>有时候由于抽象类中只需要一个特定的系统子类操作，所以可以忽略掉外部子类。这样的设计在系统类库中会比较常见，目的是对用户隐藏不需要知道的子类</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 知识点 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于Java类继承</title>
+      <link href="/2023/04/03/%E5%85%B3%E4%BA%8EJava%E7%B1%BB%E7%BB%A7%E6%89%BF/"/>
+      <url>/2023/04/03/%E5%85%B3%E4%BA%8EJava%E7%B1%BB%E7%BB%A7%E6%89%BF/</url>
+      
+        <content type="html"><![CDATA[<h2 id="属性隐藏"><a href="#属性隐藏" class="headerlink" title="属性隐藏"></a>属性隐藏</h2><p>子类中声明了与超类中相同的成员变量名</p><ul><li>从超类继承的变量将被隐藏</li><li>子类拥有了两个相同名字的变量，一个继承自超类，另一个由自己声明</li><li>当子类执行继承自超类的操作时，处理的是继承自超类的变量，而当子类执行它</li><li>自己声明的方法时，所操作的就是它自己声明的变量<h2 id="访问被隐藏的超类属性"><a href="#访问被隐藏的超类属性" class="headerlink" title="访问被隐藏的超类属性"></a>访问被隐藏的超类属性</h2>本类中声明的方法使用“super.属性”访问从超类继承的属性<h2 id="方法覆盖"><a href="#方法覆盖" class="headerlink" title="方法覆盖"></a>方法覆盖</h2><h3 id="如果子类不需使用从超类继承来的方法的功能，则可以声明自己的同名方法，称为方法覆盖"><a href="#如果子类不需使用从超类继承来的方法的功能，则可以声明自己的同名方法，称为方法覆盖" class="headerlink" title="如果子类不需使用从超类继承来的方法的功能，则可以声明自己的同名方法，称为方法覆盖"></a>如果子类不需使用从超类继承来的方法的功能，则可以声明自己的同名方法，称为方法覆盖</h3></li><li>覆盖方法的返回类型，方法名称，参数的个数及类型必须和被覆盖的方法一摸一样</li><li>覆盖方法的访问权限可以比被覆盖的宽松，但是不能更为严格<h3 id="方法覆盖的注意事项"><a href="#方法覆盖的注意事项" class="headerlink" title="方法覆盖的注意事项"></a>方法覆盖的注意事项</h3></li><li>不能覆盖的方法<ul><li>基类中声明为final的终结方法</li><li>基类中声明为static 的静态方法</li></ul></li><li>调用被覆盖的方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">super</span>.overriddenMethodName();</span><br></pre></td></tr></table></figure><h2 id="子类的构造方法"><a href="#子类的构造方法" class="headerlink" title="子类的构造方法"></a>子类的构造方法</h2><h3 id="有继承时子类的构造方法遵循以下的原则"><a href="#有继承时子类的构造方法遵循以下的原则" class="headerlink" title="有继承时子类的构造方法遵循以下的原则"></a>有继承时子类的构造方法遵循以下的原则</h3></li><li>子类不能从超类继承构造方法</li><li>最好在子类的构造方法中使用super关键字显式调用超类的某个构造方法，调用语句必须出现在子类构造方法的第一行</li><li>如子类构造方法体中没有显式调用超类构造方法，则系统在执行子类的构造方法时会自动调用超类的默认构造方法（即无参的构造方法）<h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2></li><li>所有Java类的直接或间接超类</li><li>如果一个类没有继承任何超类，那么就隐含直接继承了Object类</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 知识点 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>进程与线程</title>
       <link href="/2023/03/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
       <url>/2023/03/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</url>
